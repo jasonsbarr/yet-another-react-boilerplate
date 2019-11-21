@@ -24,9 +24,11 @@
     "@testing-library/react": "^9.3.2",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
     "react-test-renderer": "^16.12.0",
+    "terser-webpack-plugin": "^2.2.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
