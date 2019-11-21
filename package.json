@@ -1,0 +1,15 @@
+{
+  "name": "yet-another-react-project-boilerplate",
+  "version": "1.0.0",
+  "description": "React app boilerplate with Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Barr",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  }
+}
