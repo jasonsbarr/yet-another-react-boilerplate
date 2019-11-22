@@ -1,5 +1,3 @@
-const path = require("path");
-
 module.exports = {
   entry: "./src/index.js",
   module: {
@@ -7,8 +5,8 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"]
+        use: ["babel-loader"],
       },
     ],
   },
-}
+};
