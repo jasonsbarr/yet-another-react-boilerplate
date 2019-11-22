@@ -5,6 +5,7 @@ import { StateContext } from "./contexts";
 import { StateProvider } from "./store";
 import { state } from "./reducers";
 import App from "./components/App";
+import "./index.scss";
 
 render(
   <BrowserRouter>
