@@ -8,7 +8,8 @@
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "lint": "eslint \"src/**/*.{js,jsx}\"",
     "start": "webpack-dev-server --open --hot --config webpack.config.dev.js",
-    "test": "jest --watch",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "test:all": "jest --watchAll",
     "test:update": "jest -u",
     "test:coverage": "jest --coverage"
