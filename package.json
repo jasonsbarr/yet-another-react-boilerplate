@@ -4,7 +4,7 @@
   "description": "React app boilerplate with Webpack",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.dev.js",
+    "build": "webpack --config webpack.config.prod.js",
     "start": "webpack-dev-server --open --hot --config webpack.config.dev.js",
     "test": "jest --watch",
     "test:all": "jest --watchAll",
@@ -26,6 +26,7 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
     "jest-cli": "^24.9.0",
     "react-test-renderer": "^16.12.0",
