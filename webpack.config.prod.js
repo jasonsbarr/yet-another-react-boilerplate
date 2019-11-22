@@ -56,13 +56,13 @@ module.exports = merge(common, {
             options: {
               plugins: [
                 PostCssFlexbugsFixes(),
-                PostCssNormalize(),
                 PostCssPresetEnv({
                   autoprefixer: {
                     flexbox: "no-2009",
                   },
                   stage: 3,
                 }),
+                PostCssNormalize(),
               ],
             },
           },
