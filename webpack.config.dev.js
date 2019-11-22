@@ -14,4 +14,5 @@ module.exports = merge(common, {
       template: "./src/public/index.html",
     }),
   ],
+  devtool: "eval-source-map",
 });

@@ -16,4 +16,5 @@ module.exports = merge(common, {
     }),
     new CleanWebpackPlugin(),
   ],
+  devtool: "source-map",
 });
