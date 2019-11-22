@@ -15,4 +15,26 @@ module.exports = merge(common, {
     }),
   ],
   devtool: "eval-source-map",
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
+      },
+    ],
+  },
 });
