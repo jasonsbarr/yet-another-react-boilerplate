@@ -1,13 +1,16 @@
 import React from "react";
 import { render } from "react-dom";
+import { BrowserRouter } from "react-router-dom";
 import { StateContext } from "./contexts";
 import { StateProvider } from "./store";
 import { state } from "./reducers";
 import App from "./components/App";
 
 render(
-  <StateProvider stateContext={StateContext} reducer={state}>
-    <App />
-  </StateProvider>,
+  <BrowserRouter>
+    <StateProvider stateContext={StateContext} reducer={state}>
+      <App />
+    </StateProvider>
+  </BrowserRouter>,
   document.getElementById("root"),
 );
