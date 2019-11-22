@@ -18,12 +18,20 @@ module.exports = merge(common, {
     path: path.resolve(__dirname, "./build"),
   },
   optimization: {
-    minimizer: [new OptimizeCssAssetsPlugin(), new TerserPlugin()],
+    minimizer: [
+      new OptimizeCssAssetsPlugin(),
+      new TerserPlugin(),
+      new HtmlWebpackPlugin({
+        template: "./src/public/index.html",
+        minify: {
+          removeAttributeQuotes: true,
+          collapseWhitespace: true,
+          removeComments: true,
+        },
+      }),
+    ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/public/index.html",
-    }),
     new MiniCssExtractPlugin({
       filename: "[name]-[contentHash].css",
       chunkFilename: "[id].css",
