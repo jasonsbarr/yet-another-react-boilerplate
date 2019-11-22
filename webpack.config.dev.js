@@ -13,5 +13,5 @@ module.exports = merge(common, {
     new HtmlWebpackPlugin({
       template: "./src/public/index.html",
     }),
-  ]
+  ],
 });
