@@ -35,6 +35,18 @@ module.exports = merge(common, {
           },
         ],
       },
+      {
+        test: /\.(svg|png|jpe?g|gif|webp)$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name]-[hash].[ext]",
+              outputPath: "assets/img",
+            },
+          },
+        ],
+      },
     ],
   },
 });

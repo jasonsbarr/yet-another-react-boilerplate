@@ -9,6 +9,7 @@ const PostCssNormalize = require("postcss-normalize");
 const PostCssFlexbugsFixes = require("postcss-flexbugs-fixes");
 const PostCssPresetEnv = require("postcss-preset-env");
 const TerserPlugin = require("terser-webpack-plugin");
+const Sharp = require("responsive-loader/sharp");
 
 module.exports = merge(common, {
   mode: "production",
@@ -67,6 +68,39 @@ module.exports = merge(common, {
             },
           },
           "sass-loader",
+        ],
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-url-loader",
+        options: {
+          limit: 8192,
+          name: "[name]-[hash].[ext]",
+          outputPath: "assets/img",
+        },
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: "responsive-loader",
+            options: {
+              adapter: Sharp,
+              sizes: [150, 300, 600, 900, 1200, 1500, 1800],
+              placeholder: true,
+              placeholderSize: 50,
+              name: "[name]-[hash]-[width].[ext]",
+              outputPath: "assets/img",
+            },
+          },
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+              name: "[name]-[hash].[ext]",
+              outputPath: "assets/img",
+            },
+          },
         ],
       },
     ],

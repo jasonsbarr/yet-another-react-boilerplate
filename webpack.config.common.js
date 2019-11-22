@@ -1,3 +1,5 @@
+// const env = process.env.NODE_ENV;
+
 module.exports = {
   entry: "./src/index.js",
   module: {
@@ -6,16 +8,6 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ["babel-loader"],
-      },
-      {
-        test: /\.(svg|png|jpe?g|gif|webp)$/,
-        use: {
-          loader: "file-loader",
-          options: {
-            name: "[name]-[hash].[ext]",
-            outputPath: "assets/img",
-          },
-        },
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
