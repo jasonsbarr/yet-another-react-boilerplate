@@ -6,8 +6,9 @@
   "scripts": {
     "build": "webpack --config webpack.config.prod.js",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
-    "lint:css": "stylelint \"src/**/*.{js,jsx,css,scss}\"; exit 0",
+    "lint:css": "stylelint \"src/**/*.{js,jsx,css,scss}\"",
     "lint:js": "eslint \"src/**/*.{js,jsx}\"",
+    "lint:all": "npm run lint:js && npm run lint:css",
     "start": "webpack-dev-server --open --hot --port 3000 --config webpack.config.dev.js",
     "test": "jest",
     "test:watch": "jest --watch",
