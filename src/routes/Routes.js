@@ -2,10 +2,10 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { Home } from "../pages";
 
-const Router = () => (
+const Routes = () => (
   <>
     <Route exact to="/" component={Home} />
   </>
 );
 
-export default Router;
+export default Routes;
