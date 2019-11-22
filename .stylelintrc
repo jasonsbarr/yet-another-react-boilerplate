@@ -1,4 +1,7 @@
 {
   "extends": "stylelint-config-recommended",
-  "defaultSeverity": "warning"
+  "defaultSeverity": "warning",
+  "ignoreFiles": [
+    "**/vendor/*"
+  ]
 }
