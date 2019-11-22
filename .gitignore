@@ -68,3 +68,7 @@ build/
 .env.local
 .env.development.local
 .env.production.local
+
+# Editor-specific files
+.vscode/
+.idea/
