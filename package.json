@@ -73,13 +73,20 @@
     ]
   },
   "lint-staged": {
-    "*.+(js|jsx|json)": [
+    "*.+(json)": [
       "pretty-quick --staged",
       "eslint --fix",
       "git add"
     ],
-    "*.+(yml|yaml|css|scss)": [
+    "*.+(js|jsx)": [
       "pretty-quick --staged",
+      "eslint --fix",
+      "stylelint --fix",
+      "git add"
+    ],
+    "*.+(css|scss)": [
+      "pretty-quick --staged",
+      "stylelint --fix",
       "git add"
     ]
   },
