@@ -43,7 +43,7 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.(s?css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -71,28 +71,37 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.svg$/,
-        loader: "svg-url-loader",
-        options: {
-          limit: 8192,
-          name: "[name]-[hash].[ext]",
-          outputPath: "assets/img",
-        },
-      },
-      {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(svg|png|jpe?g|gif)$/,
         use: [
           {
             loader: "responsive-loader",
             options: {
               adapter: Sharp,
-              sizes: [150, 300, 600, 900, 1200, 1500, 1800],
+              sizes: [150, 300, 600, 900, 1200, 1500, 2000],
               placeholder: true,
               placeholderSize: 50,
               name: "[name]-[hash]-[width].[ext]",
               outputPath: "assets/img",
             },
           },
+        ],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: "svg-url-loader",
+            options: {
+              limit: 8192,
+              name: "[name]-[hash].[ext]",
+              outputPath: "assets/img",
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/,
+        use: [
           {
             loader: "url-loader",
             options: {
