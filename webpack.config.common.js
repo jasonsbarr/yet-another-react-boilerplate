@@ -10,6 +10,7 @@ module.exports = {
       "react-router-dom",
       "@emotion/core",
       "react-conflux",
+      "webfontloader",
     ],
   },
   module: {
