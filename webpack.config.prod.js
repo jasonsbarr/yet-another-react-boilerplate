@@ -51,7 +51,7 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name]-[contentHash].css",
-      chunkFilename: "[id].css",
+      chunkFilename: "[id]-[chunkHash].css",
     }),
     new PurgeCssPlugin({
       paths: glob.sync("./src/**/*", { nodir: true }),
