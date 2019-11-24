@@ -1,6 +1,6 @@
 {
   "name": "yet-another-react-project-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1-beta.1",
   "description": "React app boilerplate with Webpack",
   "main": "index.js",
   "scripts": {
