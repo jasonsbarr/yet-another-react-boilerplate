@@ -10,6 +10,8 @@ const PostCssFlexbugsFixes = require("postcss-flexbugs-fixes");
 const PostCssPresetEnv = require("postcss-preset-env");
 const TerserPlugin = require("terser-webpack-plugin");
 const Sharp = require("responsive-loader/sharp");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
+const ImageminMozJpeg = require("imagemin-mozjpeg");
 
 module.exports = merge(common, {
   mode: "production",
@@ -38,6 +40,26 @@ module.exports = merge(common, {
       chunkFilename: "[id].css",
     }),
     new CleanWebpackPlugin(),
+    new ImageminPlugin({
+      minFileSize: 8193,
+      onlyUseIfSmaller: true,
+      optipng: {
+        optimizationLevel: 5,
+      },
+      pgquant: {
+        quality: [0.1, 0.3],
+        speed: 5,
+      },
+      gifsicle: {
+        optimization: 3,
+      },
+      plugins: [
+        ImageminMozJpeg({
+          quality: 45,
+          progressive: false,
+        }),
+      ],
+    }),
   ],
   devtool: "source-map",
   module: {
@@ -71,7 +93,7 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.(svg|png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif)$/,
         use: [
           {
             loader: "responsive-loader",
