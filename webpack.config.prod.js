@@ -16,8 +16,6 @@ const ImageminMozJpeg = require("imagemin-mozjpeg");
 const PurgeCssPlugin = require("purgecss-webpack-plugin");
 const AggressiveSplittingPlugin = require("webpack").optimize
   .AggressiveSplittingPlugin;
-const AggressiveMergingPlugin = require("webpack").optimize
-  .AggressiveMergingPlugin;
 
 module.exports = merge(common, {
   mode: "production",
@@ -60,8 +58,7 @@ module.exports = merge(common, {
       new AggressiveSplittingPlugin({
         minSize: 30000,
         maxSize: 50000
-      }),
-      new AggressiveMergingPlugin()
+      })
     ]
   },
   plugins: [
