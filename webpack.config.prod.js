@@ -1,4 +1,5 @@
 const path = require("path");
+const glob = require("glob");
 const common = require("./webpack.config.common");
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -12,6 +13,7 @@ const TerserPlugin = require("terser-webpack-plugin");
 const Sharp = require("responsive-loader/sharp");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const ImageminMozJpeg = require("imagemin-mozjpeg");
+const PurgeCssPlugin = require("purgecss-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -38,6 +40,9 @@ module.exports = merge(common, {
     new MiniCssExtractPlugin({
       filename: "[name]-[contentHash].css",
       chunkFilename: "[id].css",
+    }),
+    new PurgeCssPlugin({
+      paths: glob.sync("./src/**/*", { nodir: true }),
     }),
     new CleanWebpackPlugin(),
     new ImageminPlugin({
