@@ -14,6 +14,10 @@ const Sharp = require("responsive-loader/sharp");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const ImageminMozJpeg = require("imagemin-mozjpeg");
 const PurgeCssPlugin = require("purgecss-webpack-plugin");
+const AggressiveSplittingPlugin = require("webpack").optimize
+  .AggressiveSplittingPlugin;
+const AggressiveMergingPlugin = require("webpack").optimize
+  .AggressiveMergingPlugin;
 
 module.exports = merge(common, {
   mode: "production",
@@ -26,17 +30,24 @@ module.exports = merge(common, {
     splitChunks: {
       chunks: "all",
       name: false,
+      minChunks: 1,
       cacheGroups: {
         vendor: {
           test: /node_modules/,
           chunks: "all",
           name: "vendor",
           enforce: true,
+          reuseExistingChunk: true,
+          priority: 0,
         },
       },
     },
+    runtimeChunk: true,
     minimizer: [
       new OptimizeCssAssetsPlugin(),
+      new PurgeCssPlugin({
+        paths: glob.sync("./src/**/*", { nodir: true }),
+      }),
       new TerserPlugin(),
       new HtmlWebpackPlugin({
         template: "./src/public/index.html",
@@ -46,15 +57,17 @@ module.exports = merge(common, {
           removeComments: true,
         },
       }),
+      new AggressiveSplittingPlugin({
+        minSize: 30000,
+        maxSize: 50000,
+      }),
+      new AggressiveMergingPlugin(),
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name]-[contentHash].css",
       chunkFilename: "[id]-[chunkHash].css",
-    }),
-    new PurgeCssPlugin({
-      paths: glob.sync("./src/**/*", { nodir: true }),
     }),
     new CleanWebpackPlugin(),
     new ImageminPlugin({
