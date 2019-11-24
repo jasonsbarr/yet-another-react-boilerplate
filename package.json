@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
     "react": "^16.12.0",
     "react-conflux": "0.0.2-beta.6",
     "react-dom": "^16.12.0",
