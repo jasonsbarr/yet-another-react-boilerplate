@@ -1,7 +1,17 @@
 // const env = process.env.NODE_ENV;
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    bundle: "./src/index.js",
+    vendor: [
+      "react",
+      "react-dom",
+      "react-router",
+      "react-router-dom",
+      "@emotion/core",
+      "react-conflux",
+    ],
+  },
   module: {
     rules: [
       {
