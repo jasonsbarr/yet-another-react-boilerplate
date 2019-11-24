@@ -4,15 +4,6 @@ const path = require("path");
 module.exports = {
   entry: {
     bundle: "./src/index.js",
-    vendor: [
-      "react",
-      "react-dom",
-      "react-router",
-      "react-router-dom",
-      "@emotion/core",
-      "react-conflux",
-      "webfontloader",
-    ],
   },
   resolve: {
     extensions: [".js", ".jsx"],

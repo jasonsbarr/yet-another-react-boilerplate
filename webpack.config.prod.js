@@ -26,6 +26,14 @@ module.exports = merge(common, {
     splitChunks: {
       chunks: "all",
       name: false,
+      cacheGroups: {
+        vendor: {
+          test: /node_modules/,
+          chunks: "all",
+          name: "vendor",
+          enforce: true,
+        },
+      },
     },
     minimizer: [
       new OptimizeCssAssetsPlugin(),
