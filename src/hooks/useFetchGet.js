@@ -13,7 +13,7 @@ import { matchAsyncState as render } from "../utils";
  */
 const useFetchGet = (
   url,
-  { initialPersist = false, method = "json" } = {},
+  { initialPersist = false, method = "json" } = {}
 ) => {
   const [initial, setInitial] = useState(true);
   const [pending, setPending] = useState(false);

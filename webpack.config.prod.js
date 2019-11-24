@@ -24,7 +24,7 @@ module.exports = merge(common, {
   output: {
     filename: "[name]-[hash].js",
     chunkFilename: "[name]-[chunkhash].js",
-    path: path.resolve(__dirname, "./build"),
+    path: path.resolve(__dirname, "./build")
   },
   optimization: {
     splitChunks: {
@@ -38,15 +38,15 @@ module.exports = merge(common, {
           name: "vendor",
           enforce: true,
           reuseExistingChunk: true,
-          priority: 0,
-        },
-      },
+          priority: 0
+        }
+      }
     },
     runtimeChunk: true,
     minimizer: [
       new OptimizeCssAssetsPlugin(),
       new PurgeCssPlugin({
-        paths: glob.sync("./src/**/*", { nodir: true }),
+        paths: glob.sync("./src/**/*", { nodir: true })
       }),
       new TerserPlugin(),
       new HtmlWebpackPlugin({
@@ -54,42 +54,42 @@ module.exports = merge(common, {
         minify: {
           removeAttributeQuotes: true,
           collapseWhitespace: true,
-          removeComments: true,
-        },
+          removeComments: true
+        }
       }),
       new AggressiveSplittingPlugin({
         minSize: 30000,
-        maxSize: 50000,
+        maxSize: 50000
       }),
-      new AggressiveMergingPlugin(),
-    ],
+      new AggressiveMergingPlugin()
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name]-[contentHash].css",
-      chunkFilename: "[id]-[chunkHash].css",
+      chunkFilename: "[id]-[chunkHash].css"
     }),
     new CleanWebpackPlugin(),
     new ImageminPlugin({
       minFileSize: 8193,
       onlyUseIfSmaller: true,
       optipng: {
-        optimizationLevel: 5,
+        optimizationLevel: 5
       },
       pgquant: {
         quality: [0.1, 0.3],
-        speed: 5,
+        speed: 5
       },
       gifsicle: {
-        optimization: 3,
+        optimization: 3
       },
       plugins: [
         ImageminMozJpeg({
           quality: 45,
-          progressive: false,
-        }),
-      ],
-    }),
+          progressive: false
+        })
+      ]
+    })
   ],
   devtool: "source-map",
   module: {
@@ -101,8 +101,8 @@ module.exports = merge(common, {
           {
             loader: "css-loader",
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
           {
             loader: "postcss-loader",
@@ -111,16 +111,16 @@ module.exports = merge(common, {
                 PostCssFlexbugsFixes(),
                 PostCssPresetEnv({
                   autoprefixer: {
-                    flexbox: "no-2009",
+                    flexbox: "no-2009"
                   },
-                  stage: 3,
+                  stage: 3
                 }),
-                PostCssNormalize(),
-              ],
-            },
+                PostCssNormalize()
+              ]
+            }
           },
-          "sass-loader",
-        ],
+          "sass-loader"
+        ]
       },
       {
         test: /\.(png|jpe?g|gif)$/,
@@ -133,10 +133,10 @@ module.exports = merge(common, {
               placeholder: true,
               placeholderSize: 50,
               name: "[name]-[hash]-[width].[ext]",
-              outputPath: "assets/img",
-            },
-          },
-        ],
+              outputPath: "assets/img"
+            }
+          }
+        ]
       },
       {
         test: /\.svg$/,
@@ -146,10 +146,10 @@ module.exports = merge(common, {
             options: {
               limit: 8192,
               name: "[name]-[hash].[ext]",
-              outputPath: "assets/img",
-            },
-          },
-        ],
+              outputPath: "assets/img"
+            }
+          }
+        ]
       },
       {
         test: /\.(png|jpe?g|gif|webp)$/,
@@ -159,11 +159,11 @@ module.exports = merge(common, {
             options: {
               limit: 8192,
               name: "[name]-[hash].[ext]",
-              outputPath: "assets/img",
-            },
-          },
-        ],
-      },
-    ],
-  },
+              outputPath: "assets/img"
+            }
+          }
+        ]
+      }
+    ]
+  }
 });

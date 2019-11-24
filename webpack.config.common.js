@@ -3,7 +3,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    bundle: "./src/index.js",
+    bundle: "./src/index.js"
   },
   resolve: {
     extensions: [".js", ".jsx"],
@@ -16,15 +16,15 @@ module.exports = {
       pages: path.join(__dirname, "src/pages"),
       reducers: path.join(__dirname, "src/reducers"),
       routes: path.join(__dirname, "src/routes"),
-      utils: path.join(__dirname, "src/utils"),
-    },
+      utils: path.join(__dirname, "src/utils")
+    }
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: ["babel-loader"],
+        use: ["babel-loader"]
       },
       {
         test: /\.(ttf|eot|woff|woff2|otf)$/,
@@ -32,10 +32,10 @@ module.exports = {
           loader: "file-loader",
           options: {
             name: "[name].[ext]",
-            outputPath: "assets/fonts",
-          },
-        },
-      },
-    ],
-  },
+            outputPath: "assets/fonts"
+          }
+        }
+      }
+    ]
+  }
 };

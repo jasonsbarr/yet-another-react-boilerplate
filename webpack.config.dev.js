@@ -7,12 +7,12 @@ module.exports = merge(common, {
   mode: "development",
   output: {
     filename: "app.bundle.dev.js",
-    path: path.resolve(__dirname, "./build"),
+    path: path.resolve(__dirname, "./build")
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/public/index.html",
-    }),
+      template: "./src/public/index.html"
+    })
   ],
   devtool: "source-map",
   module: {
@@ -24,16 +24,16 @@ module.exports = merge(common, {
           {
             loader: "css-loader",
             options: {
-              sourceMap: true,
-            },
+              sourceMap: true
+            }
           },
           {
             loader: "sass-loader",
             options: {
-              sourceMap: true,
-            },
-          },
-        ],
+              sourceMap: true
+            }
+          }
+        ]
       },
       {
         test: /\.(svg|png|jpe?g|gif|webp)$/,
@@ -42,11 +42,11 @@ module.exports = merge(common, {
             loader: "file-loader",
             options: {
               name: "[name]-[hash].[ext]",
-              outputPath: "assets/img",
-            },
-          },
-        ],
-      },
-    ],
-  },
+              outputPath: "assets/img"
+            }
+          }
+        ]
+      }
+    ]
+  }
 });

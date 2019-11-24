@@ -13,5 +13,5 @@ render(
       <App />
     </StateProvider>
   </BrowserRouter>,
-  document.getElementById("root"),
+  document.getElementById("root")
 );

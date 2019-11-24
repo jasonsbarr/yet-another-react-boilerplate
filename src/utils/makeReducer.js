@@ -1,6 +1,6 @@
 const makeReducer = (handlers, initialState) => (
   state = initialState,
-  action,
+  action
 ) => {
   return handlers.hasOwnProperty(action.type) // eslint-disable-line
     ? handlers[action.type](state, action)
