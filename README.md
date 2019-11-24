@@ -97,6 +97,10 @@ Currently the only way to install is to download/clone the repo from Github:
 
 ```bash
 git clone --depth=1 git@github.com:jasonsbarr/yet-another-react-boilerplate.git [folder-name]
+
+npm install
+# or
+yarn
 ```
 
 The `master` branch should contain the most recent version, or if you like to live dangerously you can checkout the `develop` branch for the latest, literally up-to-the-minute changes.
