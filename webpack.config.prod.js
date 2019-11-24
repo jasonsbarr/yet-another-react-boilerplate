@@ -18,7 +18,7 @@ const PurgeCssPlugin = require("purgecss-webpack-plugin");
 module.exports = merge(common, {
   mode: "production",
   output: {
-    filename: "[name]-[contentHash].bundle.js",
+    filename: "[name]-[chunkhash].bundle.js",
     chunkFilename: "[name]-[chunkhash].bundle.js",
     path: path.resolve(__dirname, "./build"),
   },
