@@ -11,14 +11,14 @@ module.exports = merge(common, {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./src/public/index.html"
+      template: "./src/static/index.html"
     })
   ],
   devtool: "source-map",
   module: {
     rules: [
       {
-        test: /\(.s?css|sass)$/,
+        test: /(\.s?css|sass)$/,
         use: [
           "style-loader",
           {
