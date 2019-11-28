@@ -48,7 +48,7 @@ Then at the bottom of your reducers file export the `makeReducer` function with 
 
 ```js
 export default makeReducer({
-  ACTION_TYPE,
+  ACTION_TYPE
   // your other reducers
 });
 ```
@@ -61,7 +61,7 @@ It's common to see reducers that use this pattern:
 const usersReducer = (state, action) => {
   // handle building a new users property
   return { ...state, users };
-}
+};
 ```
 
 I've created a helper for it called `setState`. Simply include it when you import `makeReducer`:
@@ -199,19 +199,23 @@ I've added both the core package with the `css` prop and the `styled` higher-ord
 
 ## Installation
 
-Currently the only way to install is to download/clone the repo from Github:
+The preferred way of initiating a YARB project is to install it using the CLI:
+
+`yarb-cli create <project-directory> [options]`
+
+See the [Yarb-CLI documentation](https://github.com/jasonsbarr/yarb-cli#readme) for instructions on downloading and a complete list of options.
+
+Alternatively you can download/clone the repo from Github:
 
 ```bash
 git clone --depth=1 git@github.com:jasonsbarr/yet-another-react-boilerplate.git [folder-name]
+
+cd [folder-name]
 
 npm install
 # or
 yarn
 ```
-
-The `master` branch should contain the most recent version, or if you like to live dangerously you can checkout the `develop` branch for the latest, literally up-to-the-minute changes.
-
-A CLI client is in the works. Among other things, it will allow you to choose whether or not to include the pre-commit hook for linting and testing.
 
 ## Contributing
 
@@ -219,8 +223,10 @@ Simply submit a PR and let's talk! If you have an idea but not a fully-formed co
 
 ## Author
 
-Jason Barr (jason@jasonsbarr.com)
+Jason Barr (me@jasonbarr.dev)
 
 ## Copyright and license info
 
-&copy; 2019 by Jason Barr. [Released under the MIT license](./LICENSE).
+Yet Another React Boilerplate is &copy; 2019 by Jason Barr. [Released under the MIT license](./LICENSE).
+
+This bootstrapped project is under its creator's copyright and may be released under a license of their choosing.
