@@ -15,8 +15,7 @@
     "newline-after-var": "warn",
     "no-console": "warn",
     "react/prop-types": "off",
-    "react-hooks/rules-of-hooks": "error",
-    "emotion/jsx-import": "error"
+    "react-hooks/rules-of-hooks": "error"
   },
   "parser": "babel-eslint",
   "plugins": [
@@ -24,7 +23,6 @@
     "import",
     "jsx-a11y",
     "react-hooks",
-    "emotion",
     "prettier"
   ],
   "parserOptions": {
