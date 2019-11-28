@@ -1,6 +1,9 @@
 import { makeReducer, setState } from "../utils";
 
-const SET_STATE = (state, { payload }) => setState(state, payload);
+const setStateProp = setState("state");
+
+const SET_STATE = (state, { payload }) =>
+  setStateProp(state, payload);
 
 export default makeReducer({
   SET_STATE
