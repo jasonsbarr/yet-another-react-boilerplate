@@ -6,11 +6,12 @@ A (very opinionated) React SPA project boilerplate built with Webpack that inclu
 - Modular state management _without_ a ton of boilerplate
 - A functional reducer factory with a `setState` helper
 - Styling with Sass, CSS-in-JS, or both
+- CSS and Sass modules for component styles that won't leak into the global scope
 - Automatic loading for both external and self-hosted webfonts
 - Linting for both styles and JS/JSX
 - Automatic code formatting
-- Testing with reasonable defaults
-- Pre-commit hooks
+- Testing with reasonable defaults for unit and integration tests
+- Pre-commit hooks for testing, linting, and code formatting
 - Optimized, responsive images
 - Code splitting optimized for modern HTTP/2 clients
 - Improved bundle cacheability for better performance
@@ -212,6 +213,8 @@ git clone --depth=1 git@github.com:jasonsbarr/yet-another-react-boilerplate.git 
 
 cd [folder-name]
 
+rm -rf .git # so you can initialize your own repo
+
 npm install
 # or
 yarn
@@ -229,4 +232,4 @@ Jason Barr (me@jasonbarr.dev)
 
 Yet Another React Boilerplate is &copy; 2019 by Jason Barr. [Released under the MIT license](./LICENSE).
 
-This bootstrapped project is under its creator's copyright and may be released under a license of their choosing.
+Projects created with this boilerplate are under their creators' copyright and may be released under a license of their choosing.

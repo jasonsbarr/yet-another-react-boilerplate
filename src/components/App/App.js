@@ -1,9 +1,9 @@
 import React from "react";
 import { Routes } from "../../routes";
-import "./App.scss";
+import styles from "./App.module.scss";
 
 const App = () => (
-  <div className="App">
+  <div className={styles.App}>
     <Routes />
   </div>
 );

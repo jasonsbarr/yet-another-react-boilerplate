@@ -1,5 +1,4 @@
 const path = require("path");
-const glob = require("glob");
 const common = require("./webpack.config.common");
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -13,12 +12,26 @@ const TerserPlugin = require("terser-webpack-plugin");
 const Sharp = require("responsive-loader/sharp");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const ImageminMozJpeg = require("imagemin-mozjpeg");
-const PurgeCssPlugin = require("purgecss-webpack-plugin");
-const AggressiveSplittingPlugin = require("webpack").optimize
-  .AggressiveSplittingPlugin;
+
+const postCssLoader = {
+  loader: "postcss-loader",
+  options: {
+    plugins: [
+      PostCssFlexbugsFixes(),
+      PostCssPresetEnv({
+        autoprefixer: {
+          flexbox: "no-2009"
+        },
+        stage: 3
+      }),
+      PostCssNormalize()
+    ]
+  }
+};
 
 module.exports = merge(common, {
   mode: "production",
+  cache: true,
   output: {
     filename: "[name]-[hash].js",
     chunkFilename: "[name]-[chunkhash].js",
@@ -43,9 +56,6 @@ module.exports = merge(common, {
     runtimeChunk: true,
     minimizer: [
       new OptimizeCssAssetsPlugin(),
-      new PurgeCssPlugin({
-        paths: glob.sync("./src/**/*", { nodir: true })
-      }),
       new TerserPlugin(),
       new HtmlWebpackPlugin({
         template: "./src/static/index.html",
@@ -54,17 +64,13 @@ module.exports = merge(common, {
           collapseWhitespace: true,
           removeComments: true
         }
-      }),
-      new AggressiveSplittingPlugin({
-        minSize: 30000,
-        maxSize: 50000
       })
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name]-[contentHash].css",
-      chunkFilename: "[id]-[chunkHash].css"
+      chunkFilename: "[name]-[chunkHash].css"
     }),
     new CleanWebpackPlugin(),
     new ImageminPlugin({
@@ -92,7 +98,28 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.module\.(s?css|sass)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              sourceMap: true
+            }
+          },
+          postCssLoader,
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
         test: /\.(s?css|sass)$/,
+        exclude: /\.module\.(s?css|sass)$/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -101,22 +128,10 @@ module.exports = merge(common, {
               sourceMap: true
             }
           },
+          postCssLoader,
           {
-            loader: "postcss-loader",
-            options: {
-              plugins: [
-                PostCssFlexbugsFixes(),
-                PostCssPresetEnv({
-                  autoprefixer: {
-                    flexbox: "no-2009"
-                  },
-                  stage: 3
-                }),
-                PostCssNormalize()
-              ]
-            }
-          },
-          "sass-loader"
+            loader: "sass-loader"
+          }
         ]
       },
       {
