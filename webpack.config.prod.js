@@ -1,5 +1,4 @@
 const path = require("path");
-const glob = require("glob");
 const common = require("./webpack.config.common");
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -13,7 +12,6 @@ const TerserPlugin = require("terser-webpack-plugin");
 const Sharp = require("responsive-loader/sharp");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const ImageminMozJpeg = require("imagemin-mozjpeg");
-const PurgeCssPlugin = require("purgecss-webpack-plugin");
 
 const postCssLoader = {
   loader: "postcss-loader",
@@ -58,9 +56,6 @@ module.exports = merge(common, {
     runtimeChunk: true,
     minimizer: [
       new OptimizeCssAssetsPlugin(),
-      new PurgeCssPlugin({
-        paths: glob.sync("./src/**/*", { nodir: true })
-      }),
       new TerserPlugin(),
       new HtmlWebpackPlugin({
         template: "./src/static/index.html",
@@ -75,7 +70,7 @@ module.exports = merge(common, {
   plugins: [
     new MiniCssExtractPlugin({
       filename: "[name]-[contentHash].css",
-      chunkFilename: "[id]-[chunkHash].css"
+      chunkFilename: "[name]-[chunkHash].css"
     }),
     new CleanWebpackPlugin(),
     new ImageminPlugin({
@@ -103,37 +98,39 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(s?css|sass)$/,
-        oneOf: [
+        test: /\.module\.(s?css|sass)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
           {
-            test: /\.module\.(s?css|sass)$/,
-            use: [
-              MiniCssExtractPlugin.loader,
-              {
-                loader: "css-loader",
-                options: {
-                  localsConvention: "camelCase",
-                  modules: true,
-                  sourceMap: true
-                }
-              },
-              postCssLoader,
-              "sass-loader"
-            ]
+            loader: "css-loader",
+            options: {
+              modules: true,
+              sourceMap: true
+            }
           },
+          postCssLoader,
           {
-            use: [
-              MiniCssExtractPlugin.loader,
-              {
-                loader: "css-loader",
-                options: {
-                  localsConvention: "camelCase",
-                  sourceMap: true
-                }
-              },
-              postCssLoader,
-              "sass-loader"
-            ]
+            loader: "sass-loader",
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(s?css|sass)$/,
+        exclude: /\.module\.(s?css|sass)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true
+            }
+          },
+          postCssLoader,
+          {
+            loader: "sass-loader"
           }
         ]
       },
