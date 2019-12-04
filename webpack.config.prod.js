@@ -17,6 +17,22 @@ const PurgeCssPlugin = require("purgecss-webpack-plugin");
 const AggressiveSplittingPlugin = require("webpack").optimize
   .AggressiveSplittingPlugin;
 
+const postCssLoader = {
+  loader: "postcss-loader",
+  options: {
+    plugins: [
+      PostCssFlexbugsFixes(),
+      PostCssPresetEnv({
+        autoprefixer: {
+          flexbox: "no-2009"
+        },
+        stage: 3
+      }),
+      PostCssNormalize()
+    ]
+  }
+};
+
 module.exports = merge(common, {
   mode: "production",
   output: {
@@ -106,21 +122,7 @@ module.exports = merge(common, {
                   sourceMap: true
                 }
               },
-              {
-                loader: "postcss-loader",
-                options: {
-                  plugins: [
-                    PostCssFlexbugsFixes(),
-                    PostCssPresetEnv({
-                      autoprefixer: {
-                        flexbox: "no-2009"
-                      },
-                      stage: 3
-                    }),
-                    PostCssNormalize()
-                  ]
-                }
-              },
+              postCssLoader,
               "sass-loader"
             ]
           },
@@ -134,21 +136,7 @@ module.exports = merge(common, {
                   sourceMap: true
                 }
               },
-              {
-                loader: "postcss-loader",
-                options: {
-                  plugins: [
-                    PostCssFlexbugsFixes(),
-                    PostCssPresetEnv({
-                      autoprefixer: {
-                        flexbox: "no-2009"
-                      },
-                      stage: 3
-                    }),
-                    PostCssNormalize()
-                  ]
-                }
-              },
+              postCssLoader,
               "sass-loader"
             ]
           }
