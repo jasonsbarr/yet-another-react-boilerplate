@@ -111,6 +111,7 @@
       "git add"
     ],
     "*.+(js|jsx)": [
+      "jest --findRelatedTests",
       "pretty-quick --staged",
       "eslint --fix",
       "stylelint --fix",
