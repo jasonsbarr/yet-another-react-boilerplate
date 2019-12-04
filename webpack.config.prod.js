@@ -123,33 +123,35 @@ module.exports = merge(common, {
               },
               "sass-loader"
             ]
+          },
+          {
+            use: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: "css-loader",
+                options: {
+                  localsConvention: "camelCase",
+                  sourceMap: true
+                }
+              },
+              {
+                loader: "postcss-loader",
+                options: {
+                  plugins: [
+                    PostCssFlexbugsFixes(),
+                    PostCssPresetEnv({
+                      autoprefixer: {
+                        flexbox: "no-2009"
+                      },
+                      stage: 3
+                    }),
+                    PostCssNormalize()
+                  ]
+                }
+              },
+              "sass-loader"
+            ]
           }
-        ],
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              localsConvention: "camelCase",
-              sourceMap: true
-            }
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: [
-                PostCssFlexbugsFixes(),
-                PostCssPresetEnv({
-                  autoprefixer: {
-                    flexbox: "no-2009"
-                  },
-                  stage: 3
-                }),
-                PostCssNormalize()
-              ]
-            }
-          },
-          "sass-loader"
         ]
       },
       {
