@@ -14,8 +14,6 @@ const Sharp = require("responsive-loader/sharp");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const ImageminMozJpeg = require("imagemin-mozjpeg");
 const PurgeCssPlugin = require("purgecss-webpack-plugin");
-const AggressiveSplittingPlugin = require("webpack").optimize
-  .AggressiveSplittingPlugin;
 
 const postCssLoader = {
   loader: "postcss-loader",
@@ -35,6 +33,7 @@ const postCssLoader = {
 
 module.exports = merge(common, {
   mode: "production",
+  cache: true,
   output: {
     filename: "[name]-[hash].js",
     chunkFilename: "[name]-[chunkhash].js",
@@ -70,10 +69,6 @@ module.exports = merge(common, {
           collapseWhitespace: true,
           removeComments: true
         }
-      }),
-      new AggressiveSplittingPlugin({
-        minSize: 30000,
-        maxSize: 50000
       })
     ]
   },
