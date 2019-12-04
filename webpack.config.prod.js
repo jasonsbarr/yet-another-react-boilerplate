@@ -93,11 +93,44 @@ module.exports = merge(common, {
     rules: [
       {
         test: /\.(s?css|sass)$/,
+        oneOf: [
+          {
+            test: /\.module\.(s?css|sass)$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              {
+                loader: "css-loader",
+                options: {
+                  localsConvention: "camelCase",
+                  modules: true,
+                  sourceMap: true
+                }
+              },
+              {
+                loader: "postcss-loader",
+                options: {
+                  plugins: [
+                    PostCssFlexbugsFixes(),
+                    PostCssPresetEnv({
+                      autoprefixer: {
+                        flexbox: "no-2009"
+                      },
+                      stage: 3
+                    }),
+                    PostCssNormalize()
+                  ]
+                }
+              },
+              "sass-loader"
+            ]
+          }
+        ],
         use: [
           MiniCssExtractPlugin.loader,
           {
             loader: "css-loader",
             options: {
+              localsConvention: "camelCase",
               sourceMap: true
             }
           },
