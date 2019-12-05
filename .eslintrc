@@ -5,7 +5,7 @@
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:json/recommended",
-    "prettier",
+    "plugin:prettier/recommended",
     "prettier/react"
   ],
   "rules": {
@@ -15,7 +15,8 @@
     "newline-after-var": "warn",
     "no-console": "warn",
     "react/prop-types": "off",
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   },
   "parser": "babel-eslint",
   "plugins": [
