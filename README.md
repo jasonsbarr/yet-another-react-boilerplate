@@ -139,6 +139,12 @@ Run with `npm run format`.
 
 _Note: I highly recommend setting up Prettier to run automatically in your editor so files are formatted when you change them_
 
+### Serve
+
+Serves your production build at `http://127.0.0.1:5000` and opens a new browser tab for it.
+
+Run with `npm run serve`
+
 ## Included React packages
 
 ### State management: Conflux

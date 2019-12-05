@@ -14,7 +14,8 @@
     "test:run": "jest",
     "test:all": "jest --watchAll",
     "test:update": "jest -u",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "serve": "live-server --port=5000 build"
   },
   "author": "Jason Barr",
   "license": "MIT",
@@ -69,6 +70,7 @@
     "jest-cli": "^24.9.0",
     "jest-emotion": "^10.0.17",
     "lint-staged": "^9.4.3",
+    "live-server": "^1.2.1",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
