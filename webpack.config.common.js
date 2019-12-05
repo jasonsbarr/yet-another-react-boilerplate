@@ -51,15 +51,14 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
-      src: path.join(__dirname, "src"),
-      actions: path.join(__dirname, "src/actions"),
-      components: path.join(__dirname, "src/components"),
-      contexts: path.join(__dirname, "src/contexts"),
-      hooks: path.join(__dirname, "src/hooks"),
-      pages: path.join(__dirname, "src/pages"),
-      reducers: path.join(__dirname, "src/reducers"),
-      routes: path.join(__dirname, "src/routes"),
-      utils: path.join(__dirname, "src/utils")
+      Actions: path.join(__dirname, "src/actions"),
+      Components: path.join(__dirname, "src/components"),
+      Contexts: path.join(__dirname, "src/contexts"),
+      Hooks: path.join(__dirname, "src/hooks"),
+      Views: path.join(__dirname, "src/views"),
+      Reducers: path.join(__dirname, "src/reducers"),
+      Routes: path.join(__dirname, "src/routes"),
+      Utils: path.join(__dirname, "src/utils")
     }
   },
   plugins,
