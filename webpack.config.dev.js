@@ -18,44 +18,6 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.module\.(s?css|sass)$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              sourceMap: true
-            }
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(s?css|sass)$/,
-        exclude: /\.module\.(s?css|sass)$/,
-        use: [
-          "style-loader",
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true
-            }
-          },
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
         test: /\.(svg|png|jpe?g|gif|webp)$/,
         use: [
           {
