@@ -1,4 +1,4 @@
-import { makeReducer, setState } from "../utils";
+import { makeReducer, setState } from "Utils";
 
 const setStateProp = setState("state");
 

@@ -38,7 +38,7 @@ Of course, you are completely free to ignore my suggestions and structure things
 To use the reducer factory function, simply import it at the top of the file containing your reducers:
 
 ```js
-import { makeReducer } from "path/to/utils";
+import { makeReducer } from "Utils";
 ```
 
 Define a reducer function to handle each action you'll need to dispatch. Note that the function names will need to be formatted to match your action types.
@@ -68,7 +68,7 @@ const usersReducer = (state, action) => {
 I've created a helper for it called `setState`. Simply include it when you import `makeReducer`:
 
 ```js
-import { makeReducer, setState } from "path/to/utils";
+import { makeReducer, setState } from "Utils";
 ```
 
 Pass the key you want to set on your state object into `setState`:
@@ -139,6 +139,12 @@ Run with `npm run format`.
 
 _Note: I highly recommend setting up Prettier to run automatically in your editor so files are formatted when you change them_
 
+### Serve
+
+Serves your production build at `http://127.0.0.1:5000` and opens a new browser tab for it.
+
+Run with `npm run serve`
+
 ## Included React packages
 
 ### State management: Conflux
@@ -166,6 +172,7 @@ I've added both the core package with the `css` prop and the `styled` higher-ord
 ## Developer experience enhancements
 
 - Supports JSX and both the latest JavaScript standards and Stage 4 proposals, as well as the popular Class Properties, Decorators, Dynamic Import, and BigInt late-stage TC39 proposals via Babel
+- Import aliases defined in Webpack, ESLint config, Jest config, and `jsconfig.json` so instead of having to use a long relative path to import a component you can just use `import { App } from "Components/App"` wherever you're working
 - WebFontLoader for easy web font use, both from external sources like Google Fonts and those hosted on your own server
 - Emotion JSX transformation built-in via Babel so you don't have to manually define the `@jsx` pragma in every component you style
 - Automatically loads imported CSS and Sass files into the build so you can choose how you want to write your styles
@@ -232,4 +239,4 @@ Jason Barr (me@jasonbarr.dev)
 
 Yet Another React Boilerplate is &copy; 2019 by Jason Barr. [Released under the MIT license](./LICENSE).
 
-Projects created with this boilerplate are under their creators' copyright and may be released under a license of their choosing.
+Projects created with this template are under their creators' copyright and may be released under a license of their choosing.

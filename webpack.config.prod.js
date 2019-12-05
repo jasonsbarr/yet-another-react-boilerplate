@@ -3,31 +3,11 @@ const common = require("./webpack.config.common");
 const merge = require("webpack-merge");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const PostCssNormalize = require("postcss-normalize");
-const PostCssFlexbugsFixes = require("postcss-flexbugs-fixes");
-const PostCssPresetEnv = require("postcss-preset-env");
 const TerserPlugin = require("terser-webpack-plugin");
 const Sharp = require("responsive-loader/sharp");
 const ImageminPlugin = require("imagemin-webpack-plugin").default;
 const ImageminMozJpeg = require("imagemin-mozjpeg");
-
-const postCssLoader = {
-  loader: "postcss-loader",
-  options: {
-    plugins: [
-      PostCssFlexbugsFixes(),
-      PostCssPresetEnv({
-        autoprefixer: {
-          flexbox: "no-2009"
-        },
-        stage: 3
-      }),
-      PostCssNormalize()
-    ]
-  }
-};
 
 module.exports = merge(common, {
   mode: "production",
@@ -68,10 +48,6 @@ module.exports = merge(common, {
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: "[name]-[contentHash].css",
-      chunkFilename: "[name]-[chunkHash].css"
-    }),
     new CleanWebpackPlugin(),
     new ImageminPlugin({
       minFileSize: 8193,
@@ -94,46 +70,8 @@ module.exports = merge(common, {
       ]
     })
   ],
-  devtool: "source-map",
   module: {
     rules: [
-      {
-        test: /\.module\.(s?css|sass)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              modules: true,
-              sourceMap: true
-            }
-          },
-          postCssLoader,
-          {
-            loader: "sass-loader",
-            options: {
-              sourceMap: true
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(s?css|sass)$/,
-        exclude: /\.module\.(s?css|sass)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-            options: {
-              sourceMap: true
-            }
-          },
-          postCssLoader,
-          {
-            loader: "sass-loader"
-          }
-        ]
-      },
       {
         test: /\.(png|jpe?g|gif)$/,
         use: [
