@@ -7,6 +7,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:json/recommended",
+    "plugin:jest/recommended",
     "plugin:prettier/recommended",
     "prettier/react"
   ],
@@ -22,7 +23,15 @@ module.exports = {
     "react-hooks/exhaustive-deps": "warn"
   },
   parser: "babel-eslint",
-  plugins: ["react", "import", "jsx-a11y", "react-hooks", "prettier"],
+  plugins: [
+    "react",
+    "import",
+    "jsx-a11y",
+    "json",
+    "react-hooks",
+    "jest",
+    "prettier"
+  ],
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: "module",
@@ -34,7 +43,8 @@ module.exports = {
     es6: true,
     jest: true,
     browser: true,
-    node: true
+    node: true,
+    "jest/globals": true
   },
   settings: {
     react: {

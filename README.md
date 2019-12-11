@@ -1,5 +1,7 @@
 # Yet Another React Boilerplate
 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+
 A (very opinionated) React SPA project boilerplate built with Webpack that includes:
 
 - Dynamic, client-side routing
@@ -230,6 +232,8 @@ yarn
 ## Contributing
 
 Simply submit a PR and let's talk! If you have an idea but not a fully-formed code solution, either an issue or draft PR will do.
+
+Please note that this project uses a [contributor code of conduct](CODE_OF_CONDUCT.md) to maintain a welcoming, inclusive, and healthy community to promote a positive experience for as many people as possible. By participating, you agree to abide by its terms.
 
 ## Author
 
