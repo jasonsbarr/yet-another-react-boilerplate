@@ -1,3 +1,3 @@
-import state from "./state";
+import reducer from "./reducer";
 
-export { state };
+export { reducer };
