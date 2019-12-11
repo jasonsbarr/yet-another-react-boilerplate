@@ -48,6 +48,9 @@ module.exports = {
   entry: {
     bundle: "./src/index.js"
   },
+  output: {
+    publicPath: "/"
+  },
   resolve: {
     extensions: [".js", ".jsx"],
     alias: {
@@ -63,6 +66,9 @@ module.exports = {
   },
   plugins,
   devtool: "source-map",
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     rules: [
       {
