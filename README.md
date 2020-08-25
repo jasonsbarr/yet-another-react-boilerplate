@@ -43,7 +43,7 @@ To use the reducer factory function, simply import it at the top of the file con
 import { makeReducer } from "@jasonsbarr/reducer-utils";
 ```
 
-Define a reducer function to handle each action you'll need to dispatch. Note that the function names will need to be formatted to match your action types.
+Define a reducer function to handle each action you'll need to dispatch. Note that the function names will need to be formatted to match your action types. I recommend setting constants for your action names, that way your editor will autocomplete for you to minimize the chance of making a typo. I've included an example of this in the boilerplate source code.
 
 For example, if you define action types like `ACTION_TYPE`, the function for that action will also need to be `ACTION_TYPE`.
 
