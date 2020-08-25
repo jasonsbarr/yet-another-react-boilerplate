@@ -62,7 +62,8 @@ It's common to see reducers that use this pattern:
 
 ```js
 const usersReducer = (state, action) => {
-  // handle building a new users property
+  // handle building a new user
+  const users = { ...state.users, user };
   return { ...state, users };
 };
 ```
