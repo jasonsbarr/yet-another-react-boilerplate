@@ -177,7 +177,7 @@ I've added both the core package with the `css` prop and the `styled` higher-ord
 
 ### My own custom hooks package
 
-[React Custom Hooks](https://github.com/jasonsbarr/react-hooks-and-utils/tree/master/packages/custom-hooks) gives you some of my favorite custom hooks, which I update every time I create a new one for a project. Each custom hook is battle-tested and used in production in live applications.
+[React Custom Hooks](https://github.com/jasonsbarr/react-hooks-and-utils/tree/master/packages/custom-hooks) gives you some of my favorite custom hooks, which I update every time I create a new one for a project. Each custom hook is battle-tested and has been used in production in live applications.
 
 ## Developer experience enhancements
 
