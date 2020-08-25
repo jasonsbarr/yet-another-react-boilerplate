@@ -40,7 +40,7 @@ Of course, you are completely free to ignore my suggestions and structure things
 To use the reducer factory function, simply import it at the top of the file containing your reducers:
 
 ```js
-import { makeReducer } from "Utils";
+import { makeReducer } from "@jasonsbarr/reducer-utils";
 ```
 
 Define a reducer function to handle each action you'll need to dispatch. Note that the function names will need to be formatted to match your action types.
@@ -70,7 +70,7 @@ const usersReducer = (state, action) => {
 I've created a helper for it called `setState`. Simply include it when you import `makeReducer`:
 
 ```js
-import { makeReducer, setState } from "Utils";
+import { makeReducer, setState } from "@jasonsbarr/reducer-utils";
 ```
 
 Pass the key you want to set on your state object into `setState`:
@@ -88,6 +88,8 @@ const ADD_USER(state, { payload: user }) {
 };
 ```
 
+That way you _only_ have to worry about the specific part of your state being updated. The rest is taken care of automatically!
+
 ## Usage: Included scripts
 
 Here are the included scripts you can use after installation and their provided options
@@ -104,6 +106,8 @@ Makes a production build, complete with optimized assets including responsive im
 
 Run with `npm run build`.
 
+You can also build and locally serve your production build with `npm run start:prod`.
+
 ### Test
 
 Uses Jest and React Testing Library to run your tests.
@@ -116,7 +120,7 @@ Use `npm run test:all` to watch for file changes and then run _all_ tests on eac
 
 Use `npm run test:update` to update tests, including snapshots, and then run all tests.
 
-Use `npm run test:coverage` or to generate coverage statistics for your test suite.
+Use `npm run test:coverage` to generate coverage statistics for your test suite.
 
 ### Lint
 
@@ -170,6 +174,10 @@ With the new hooks available in v5.1 and upcoming plans to merge in Reach Router
 [Emotion](https://emotion.sh/docs/introduction) provides advanced styling capabilities with all the power of JavaScript, powerful built-in composition tools, and a great developer experience with source maps, testing utilities, and more.
 
 I've added both the core package with the `css` prop and the `styled` higher-order component interface.
+
+### My own custom hooks package
+
+[React Custom Hooks](https://github.com/jasonsbarr/react-hooks-and-utils/tree/master/packages/custom-hooks) gives you some of my favorite custom hooks, which I update every time I create a new one for a project. Each custom hook is battle-tested and used in production in live applications.
 
 ## Developer experience enhancements
 
